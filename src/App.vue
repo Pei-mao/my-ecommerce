@@ -1,94 +1,66 @@
 <template>
   <div id="app">
     <Navbar :cartItemCount="cart.length" />
-    <main>
-      <section class="products-section">
-        <ProductList :products="products" @add-to-cart="addToCart" />
+    <Hero />
+    <router-view></router-view>
+    <!-- 滾動內容區域 -->
+    <div class="scrollable-content">
+      <section>
+        <h2>Our Story</h2>
+        <p>
+          Khieng Couture represents the finest quality of design and craftsmanship. Explore the elegance in every detail.
+        </p>
       </section>
-      <section class="cart-section">
-        <Cart :cart="cart" @remove-from-cart="removeFromCart" />
+      <section>
+        <h2>Our Products</h2>
+        <p>Experience the sophistication and beauty of our exclusive collection.</p>
       </section>
-    </main>
+    </div>
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue';
-import ProductList from './components/ProductList.vue';
-import Cart from './components/Cart.vue';
+import Hero from './components/Hero.vue';
 
 export default {
   components: {
     Navbar,
-    ProductList,
-    Cart,
+    Hero,
   },
   data() {
     return {
-      products: [
-        { id: 1, name: '項鍊', price: 500, image: 'https://via.placeholder.com/150' },
-        { id: 2, name: '耳環', price: 300, image: 'https://via.placeholder.com/150' },
-        { id: 3, name: '手鍊', price: 400, image: 'https://via.placeholder.com/150' },
-      ],
-      cart: [],
+      cart: [], // 購物車數據
     };
-  },
-  methods: {
-    addToCart(product) {
-      this.cart.push(product);
-    },
-    removeFromCart(index) {
-      this.cart.splice(index, 1);
-    },
   },
 };
 </script>
 
 <style>
-/* 主容器 */
-main {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 20px;
-  gap: 20px;
-  background-color: #f9f9f9;
+body {
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif; /* 使用現代代碼字體 */
+  color: #333;
+  background-color: #f5f5f5;
 }
 
-/* 商品列表區域 */
-.products-section {
-  flex: 3;
+#app {
+  min-height: 100vh; /* 確保應用程序容器至少滿足視窗高度 */
 }
 
-/* 購物車區域 */
-.cart-section {
-  flex: 1;
-  border: 1px solid #ddd;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.scrollable-content section {
+  padding: 50px;
+  background-color: #ffffff;
+  margin-bottom: 10px;
 }
 
-.cart-section h2 {
-  margin-bottom: 20px;
-  font-size: 20px;
-  text-align: left;
+.scrollable-content section h2 {
+  font-size: 2rem;
+  color: #333;
 }
 
-.cart-section p {
-  font-size: 16px;
-  color: #555;
-  text-align: left;
-}
-
-@media (max-width: 768px) {
-  main {
-    flex-direction: column;
-  }
-
-  .cart-section {
-    margin-top: 20px;
-  }
+.scrollable-content section p {
+  font-size: 1.2rem;
+  color: #666;
 }
 </style>
