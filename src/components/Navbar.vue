@@ -73,45 +73,46 @@ export default {
 }
 
 .dropdown-menu {
-  color: black; /* 未點擊和已點擊時的顏色一致 */
-  display: none;
+  color: black;
+  visibility: hidden;
+  opacity: 0;
   position: absolute;
   top: 100%;
   left: 0;
-  background: rgba(255, 255, 255, 0.7); /* 添加透明背景 */
-  border: 1px solid #ddd; /* 邊框 */
-  border-radius: 8px; /* 圓角邊框 */
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #ddd;
+  border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   list-style: none;
   padding: 10px 0;
   z-index: 1000;
-  min-width: 150px;
-  transition: opacity 0.3s ease, visibility 0.3s ease; /* 淡入淡出效果 */
+  min-width: 120px;
+  display: flex; /* 使用 Flexbox */
+  flex-direction: column; /* 垂直排列 */
+
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
 }
 
 .dropdown-menu li {
-  margin: 0;
+  width: 100%; /* 確保每項佔據整行 */
+  margin: 5px 10px; /* 在上下增加 5px 的間距 */
 }
 
 .dropdown-menu li a {
   color: black;
   text-decoration: none;
-  padding: 10px 15px;
-  display: block;
+  padding: 8px 10px;
   transition: background-color 0.3s ease;
 }
 
 .dropdown-menu li a:hover {
-  background-color: #f5f5f5;
-  color: #007bff; /* 滑鼠懸停時文字顏色 */
-}
-
-.dropdown:hover .dropdown-menu {
-  opacity: 1; /* 滑鼠懸停時顯示 */
-  display: block;
-}
-.dropdown-menu li a:visited {
-  color: black; /* 確保已訪問的顏色不變 */
+  
+  color: #ffcc00;
 }
 
 .navbar {
@@ -130,19 +131,20 @@ export default {
 
 .navbar.scrolled {
   background-color: white;
+  color: black;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar:not(.scrolled) {
-  color: white; /* 滾動前的文字顏色 */
-  background-color: transparent; /* 初始透明 */
+  background-color: transparent;
+  color: white;
 }
 
 .logo {
-  text-decoration: none; /* 移除底線 */
+  text-decoration: none;
   display: flex;
   align-items: center;
-  margin-right: 35px; /* 與其他區塊保持距離 */
+  margin-right: 35px;
 }
 
 .logo img {
@@ -173,13 +175,13 @@ nav ul li {
 }
 
 nav ul li a {
-  color: white; /* 設定連結為白色 */
-  text-decoration: none; /* 移除下劃線 */
+  color: white;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: #ffcc00; /* 滑鼠懸停時的顏色 */
+  color: #ffcc00;
 }
 
 .navbar.scrolled nav ul li a {
@@ -189,8 +191,8 @@ nav ul li a:hover {
 .actions {
   display: flex;
   align-items: center;
-  margin-left: auto; /* 將 actions 推到最右側 */
-  padding-right: 30px; /* 增加右側間距，避免圖示被切掉 */
+  margin-left: auto;
+  padding-right: 30px;
 }
 
 .actions button {
@@ -200,6 +202,17 @@ nav ul li a:hover {
   cursor: pointer;
   margin-left: 10px;
   color: white;
+  transition: color 0.3s ease; /* 添加過渡效果 */
+}
+
+.actions button:hover {
+  color: #ffcc00; /* 滑鼠懸停時變為黃色 */
+}
+
+.actions .search:hover i,
+.actions .login:hover i,
+.actions .cart:hover i {
+  color: #ffcc00; /* 確保圖標文字也會變色 */
 }
 
 .navbar.scrolled .actions button {
