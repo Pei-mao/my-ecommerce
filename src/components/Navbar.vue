@@ -8,7 +8,20 @@
     <nav>
       <ul>
         <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/products">所有商品</router-link></li>
+        <li class="dropdown">
+	  <span>所有商品</span>
+	  <ul class="dropdown-menu">
+	    <li><router-link to="/products?category=頭飾">頭飾</router-link></li>
+	    <li><router-link to="/products?category=耳飾">耳飾</router-link></li>
+	    <li><router-link to="/products?category=頸飾">頸飾</router-link></li>
+	    <li><router-link to="/products?category=手部飾品">手部飾品</router-link></li>
+	    <li><router-link to="/products?category=戒指">戒指</router-link></li>
+	    <li><router-link to="/products?category=腳飾">腳飾</router-link></li>
+	    <li><router-link to="/products?category=胸飾">胸飾</router-link></li>
+	    <li><router-link to="/products?category=腰飾">腰飾</router-link></li>
+    	    <li><router-link to="/products?category=身體裝飾">身體裝飾</router-link></li>
+	  </ul>
+	</li>
         <li><router-link to="/news">最新消息</router-link></li>
         <li><router-link to="/contact">Contact</router-link></li>
       </ul>
@@ -55,6 +68,54 @@ export default {
 </script>
 
 <style scoped>
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  color: black; /* 未點擊和已點擊時的顏色一致 */
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.7); /* 添加透明背景 */
+  border: 1px solid #ddd; /* 邊框 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加陰影 */
+  border-radius: 8px; /* 圓角邊框 */
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px 0;
+  z-index: 1000;
+  min-width: 150px;
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* 淡入淡出效果 */
+}
+
+.dropdown-menu li {
+  margin: 0;
+}
+
+.dropdown-menu li a {
+  color: black;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f5f5f5;
+  color: #007bff; /* 滑鼠懸停時文字顏色 */
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1; /* 滑鼠懸停時顯示 */
+  display: block;
+}
+.dropdown-menu li a:visited {
+  color: black; /* 確保已訪問的顏色不變 */
+}
+
 .navbar {
   line-height: 1.5;
   position: fixed;
@@ -124,6 +185,10 @@ nav ul li a:visited {
 }
 
 nav ul li a:hover {
+  color: #ffcc00; /* 滑鼠懸停時的顏色 */
+}
+
+nav ul li span:hover {
   color: #ffcc00; /* 滑鼠懸停時的顏色 */
 }
 
