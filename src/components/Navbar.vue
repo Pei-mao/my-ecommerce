@@ -80,9 +80,7 @@ export default {
   left: 0;
   background: rgba(255, 255, 255, 0.7); /* 添加透明背景 */
   border: 1px solid #ddd; /* 邊框 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加陰影 */
   border-radius: 8px; /* 圓角邊框 */
-
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   list-style: none;
   padding: 10px 0;
@@ -180,15 +178,7 @@ nav ul li a {
   transition: color 0.3s ease;
 }
 
-nav ul li a:visited {
-  color: white; /* 設定訪問過的連結為白色 */
-}
-
 nav ul li a:hover {
-  color: #ffcc00; /* 滑鼠懸停時的顏色 */
-}
-
-nav ul li span:hover {
   color: #ffcc00; /* 滑鼠懸停時的顏色 */
 }
 
