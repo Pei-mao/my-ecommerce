@@ -27,9 +27,10 @@
       </ul>
     </nav>
     <div class="actions">
-      <button class="search">
-	<i class="fas fa-search"></i>
-      </button>
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search" />
+        <i class="fas fa-search search-icon"></i>
+      </div>
       <button class="login">
         <i class="fas fa-user"></i> Login
       </button>
@@ -221,5 +222,58 @@ nav ul li a:hover {
 
 .navbar.scrolled .actions button {
   color: black;
+}
+
+/* 搜尋容器樣式 */
+.search-container {
+  background: white;
+  position: relative;
+  display: inline-block;
+  width: 40px; /* 初始寬度，只顯示圖標 */
+  transition: width 0.4s ease; /* 寬度動畫 */
+  overflow: hidden; /* 隱藏溢出的部分 */
+  border: 1px solid transparent; /* 初始無邊框 */
+  border-radius: 20px;
+}
+
+/* 滑鼠懸停時展開 */
+.search-container:hover {
+  width: 200px; /* 滑鼠懸停時展開為搜尋框寬度 */
+  border-color: #ddd; /* 增加邊框顏色 */
+}
+
+/* 搜尋輸入框 */
+.search-input {
+  width: 100%; /* 讓寬度填滿容器 */
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: #555;
+  background-color: transparent;
+  transition: opacity 0.3s ease; /* 增加漸變效果 */
+  opacity: 0; /* 初始不可見 */
+}
+
+/* 當容器擴展時，顯示輸入框 */
+.search-container:hover .search-input {
+  opacity: 1; /* 輸入框變可見 */
+}
+
+/* 搜尋圖標 */
+.search-icon {
+  position: absolute;
+  right: 12.5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* 滑鼠懸停圖標變色 */
+.search-container:hover .search-icon {
+  color: #ffcc00; /* 懸停時變為黃色 */
 }
 </style>
