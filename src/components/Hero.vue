@@ -1,7 +1,7 @@
 <template>
   <section class="hero">
     <div class="hero-content">
-      <h1>Khieng Couture</h1>
+      <h1>XiaoCi's Chic Accessories</h1>
       <p>Discover elegance and style in every piece.</p>
     </div>
   </section>

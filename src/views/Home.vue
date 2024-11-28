@@ -1,47 +1,49 @@
 <template>
   <div class="home">
-    <h1>歡迎來到飾品電商網站！</h1>
-    <p>探索我們的產品，享受購物樂趣。</p>
-    <div class="animation">
-      <img src="/hero-image.png" alt="Hero Image" />
+    <Hero />
+    <div class="scrollable-content">
+      <section>
+        <h2>Our Story</h2>
+        <p>
+          XiaoCi's Chic Accessories represents the finest quality of design and craftsmanship. Explore the elegance in every detail.
+        </p>
+      </section>
+      <section>
+        <h2>Our Products</h2>
+        <p>Experience the sophistication and beauty of our exclusive collection.</p>
+      </section>
     </div>
   </div>
 </template>
 
 <script>
+import Hero from '../components/Hero.vue';
+
 export default {
-  name: 'Home',
+  components: {
+    Hero,
+  },
 };
 </script>
 
 <style scoped>
 .home {
   text-align: center;
+}
+
+.scrollable-content section {
   padding: 50px;
+  background-color: #ffffff;
+  margin-bottom: 10px;
 }
 
-.home h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+.scrollable-content section h2 {
+  font-size: 2rem;
+  color: #333;
 }
 
-.home p {
+.scrollable-content section p {
   font-size: 1.2rem;
-  margin-bottom: 40px;
-}
-
-.home .animation img {
-  max-width: 100%;
-  height: auto;
-  animation: fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  color: #666;
 }
 </style>

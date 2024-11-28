@@ -3,7 +3,7 @@
     <!-- 使用 router-link 包裹 logo -->
     <router-link to="/" class="logo">
       <img src="/logo.png" alt="Logo" />
-      <span>Khieng Couture</span>
+      <span>XiaoCi</span>
     </router-link>
     <nav>
       <ul>
