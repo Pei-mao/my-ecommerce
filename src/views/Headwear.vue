@@ -1,49 +1,133 @@
 <template>
-  <div class="headwear">
-    <h1>頭飾</h1>
-    <p>探索我們的頭飾系列，發現最精緻的設計。</p>
-    <div class="product-list">
-      <div class="product" v-for="product in headwears" :key="product.id">
-        <img :src="product.image" :alt="product.name" />
-        <h3>{{ product.name }}</h3>
-        <p>${{ product.price }}</p>
-        <button @click="$emit('add-to-cart', product)">加入購物車</button>
+  <div class="headwear-page">
+    <!-- 左側分類表 -->
+    <aside class="category-menu">
+      <h2>SHOP NOW</h2>
+      <ul>
+        <li v-for="category in categories" :key="category.id">
+          <a
+            :href="'/products?category=' + category.name"
+            :class="{ active: category.name === currentCategory }"
+          >
+            {{ category.name }}
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- 右側商品展示 -->
+    <main class="product-gallery">
+      <h1>頭飾</h1>
+      <p>探索我們的頭飾系列，發現最精緻的設計。</p>
+      <div class="product-list">
+        <div class="product" v-for="product in headwears" :key="product.id">
+          <img :src="product.image" :alt="product.name" />
+          <h3>{{ product.name }}</h3>
+          <p>NT.{{ product.price }}</p>
+          <button @click="$emit('add-to-cart', product)">加入購物車</button>
+        </div>
       </div>
-    </div>
+    </main>
   </div>
 </template>
 
 <script>
+import { ref, computed } from "vue";
+import { useRoute } from "vue-router";
+
 export default {
-  data() {
+  setup() {
+    const route = useRoute();
+    const currentCategory = ref(route.query.category || "頭飾"); // 當前分類
+    const categories = [
+      { id: 1, name: "頭飾" },
+      { id: 2, name: "耳飾" },
+      { id: 3, name: "項鍊" },
+      { id: 4, name: "手部飾品" },
+      { id: 5, name: "戒指" },
+      { id: 6, name: "腳飾" },
+      { id: 7, name: "胸飾" },
+      { id: 8, name: "腰飾" },
+      { id: 9, name: "身體裝飾" },
+    ];
+
+    const headwears = computed(() => [
+      { id: 1, name: "珍珠髮箍", price: 299, image: "/images/headwear1.jpg" },
+      { id: 2, name: "水晶皇冠", price: 599, image: "/images/headwear2.jpg" },
+      { id: 3, name: "金色頭帶", price: 399, image: "/images/headwear3.jpg" },
+    ]);
+
     return {
-      headwears: [
-        { id: 1, name: "珍珠髮箍", price: 299, image: "/images/headwear1.jpg" },
-        { id: 2, name: "水晶皇冠", price: 599, image: "/images/headwear2.jpg" },
-        { id: 3, name: "金色頭帶", price: 399, image: "/images/headwear3.jpg" },
-      ],
+      currentCategory,
+      categories,
+      headwears,
     };
   },
 };
 </script>
 
 <style scoped>
-.headwear {
-  text-align: center;
+.headwear-page {
+  display: flex;
+  gap: 20px;
   padding: 20px;
 }
 
+.category-menu {
+  width: 200px;
+  border-right: 1px solid #ddd;
+  padding-right: 20px;
+}
+
+.category-menu h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.category-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-menu li {
+  margin-bottom: 10px;
+}
+
+.category-menu a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+}
+
+.category-menu a.active {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.product-gallery {
+  flex: 1;
+}
+
+.product-gallery h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.product-gallery p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
 .product-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
 
 .product {
   border: 1px solid #ddd;
   padding: 10px;
-  width: 200px;
   text-align: center;
   background-color: #fff;
   border-radius: 8px;

@@ -1,5 +1,5 @@
 <template>
-  <header :class="['navbar', { 'scrolled': isScrolled }]">
+  <header :class="['navbar', { 'scrolled': isScrolled || isWhiteHeader }]">
     <!-- 使用 router-link 包裹 logo -->
     <router-link to="/" class="logo">
       <img src="/logo.png" alt="Logo" />
@@ -52,17 +52,30 @@ export default {
   data() {
     return {
       isScrolled: false, // 控制滾動狀態
+      isWhiteHeader: false, // 控制頁首背景是否為白色
     };
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll); // 監聽滾動
+    this.updateHeaderStyle(); // 初始化根據當前路由設置樣式
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll); // 移除監聽
   },
   methods: {
     handleScroll() {
-      this.isScrolled = window.scrollY > 100; // 判斷滾動超過 50px
+      this.isScrolled = window.scrollY > 100; // 判斷滾動超過 100px
+    },
+  updateHeaderStyle() {
+      const route = this.$route; // 獲取當前路由
+      // 根據路由 path 決定頁首是否為白底黑字
+      this.isWhiteHeader = route.path !== "/"; // 如果不是首頁，設置為白底黑字
+    },
+  },
+  watch: {
+    $route() {
+      // 當路由發生變化時更新頁首樣式
+      this.updateHeaderStyle();
     },
   },
 };
