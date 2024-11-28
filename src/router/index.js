@@ -8,7 +8,6 @@ import Headwear from '../views/Headwear.vue';
 const routes = [
   { path: '/', component: Home },
   { path: '/products', component: ProductList },
-  { path: '/products?category=頭飾', component: Headwear },
   { path: '/news', component: News },
   { path: '/contact', component: Contact },
 ];
