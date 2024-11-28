@@ -188,6 +188,9 @@ nav ul li a:hover {
   color: black;
 }
 
+.navbar.scrolled nav ul li a:hover {
+  color: #ffcc00;
+}
 .actions {
   display: flex;
   align-items: center;
@@ -208,6 +211,7 @@ nav ul li a:hover {
 .actions button:hover {
   color: #ffcc00; /* 滑鼠懸停時變為黃色 */
 }
+
 
 .actions .search:hover i,
 .actions .login:hover i,
