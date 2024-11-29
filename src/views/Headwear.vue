@@ -1,26 +1,35 @@
 <template>
   <div class="headwear-page">
-    <!-- 左側分類表 -->
-    <aside class="category-menu">
-      <h2>SHOP NOW</h2>
-      <ul>
-        <li v-for="category in categories" :key="category.id">
-          <a
-            :href="'/products?category=' + category.name"
-            :class="{ active: category.name === currentCategory }"
-          >
-            {{ category.name }}
-          </a>
-        </li>
-      </ul>
-    </aside>
+    <!-- 左側區域 -->
+    <div class="left-section">
+      <!-- 頁面路徑 -->
+      <nav class="breadcrumb">
+        <router-link to="/">Home</router-link> / 
+        <span>{{ currentCategory }}</span>
+      </nav>
+      
+      <!-- 左側分類表 -->
+      <aside class="category-menu">
+        <h2>SHOP NOW</h2>
+        <ul>
+          <li v-for="category in categories" :key="category.id">
+            <a
+              :href="'/products?category=' + category.name"
+              :class="{ active: category.name === currentCategory }"
+            >
+              {{ category.name }}
+            </a>
+          </li>
+        </ul>
+      </aside>
+    </div>
 
     <!-- 右側商品展示 -->
     <main class="product-gallery">
       <h1>頭飾</h1>
-      <p>探索我們的頭飾系列，發現最精緻的設計。</p>
+      <p>探索我們的頭飾系列，發現最迷人的時尚設計。</p>
       <div class="product-list">
-        <div class="product" v-for="product in headwears" :key="product.id">
+        <div class="product" v-for="product in headwear" :key="product.id">
           <img :src="product.image" :alt="product.name" />
           <h3>{{ product.name }}</h3>
           <p>NT.{{ product.price }}</p>
@@ -51,16 +60,18 @@ export default {
       { id: 9, name: "身體裝飾" },
     ];
 
-    const headwears = computed(() => [
-      { id: 1, name: "珍珠髮箍", price: 299, image: "/images/headwear/headwear1.jpg" },
-      { id: 2, name: "水晶皇冠", price: 599, image: "/images/headwear/headwear2.jpg" },
-      { id: 3, name: "金色頭帶", price: 399, image: "/images/headwear/headwear3.jpg" },
+    const headwear = computed(() => [
+      { id: 1, name: "皇冠頭飾", price: 2999, image: "/images/headwear/crown.jpg" },
+      { id: 2, name: "花環頭飾", price: 1999, image: "/images/headwear/flower-crown.jpg" },
+      { id: 3, name: "珍珠髮帶", price: 1299, image: "/images/headwear/pearl-headband.jpg" },
+      { id: 4, name: "水晶髮夾", price: 999, image: "/images/headwear/crystal-hairpin.jpg" },
+      { id: 5, name: "絲帶髮箍", price: 799, image: "/images/headwear/ribbon-headband.jpg" },
     ]);
 
     return {
       currentCategory,
       categories,
-      headwears,
+      headwear,
     };
   },
 };
@@ -70,13 +81,40 @@ export default {
 .headwear-page {
   display: flex;
   gap: 20px;
+  max-width: 1600px; /* 設定最大寬度 */
+  margin: 0 100px; /* 自動居中頁面 */
   padding: 20px;
+}
+
+.left-section {
+  padding-left: 10px; /* 左側統一的內邊距 */
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 10px 0; /* 合併 margin */
+}
+
+.breadcrumb a {
+  color: #007bff;
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb span {
+  color: #333;
+  font-weight: bold;
 }
 
 .category-menu {
   width: 200px;
   border-right: 1px solid #ddd;
-  padding-right: 20px;
+  margin-top: 0; /* 確保分類表緊貼 breadcrumb */
 }
 
 .category-menu h2 {
@@ -135,9 +173,11 @@ export default {
 }
 
 .product img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
+  width: 100%; /* 確保圖片自適應卡片寬度 */
+  max-width: 200px; /* 限制圖片最大寬度 */
+  height: 200px; /* 固定高度，避免不規則圖片影響佈局 */
+  object-fit: cover; /* 裁切圖片以適應容器大小 */
+  margin: 0 auto; /* 置中圖片 */
 }
 
 .product h3 {

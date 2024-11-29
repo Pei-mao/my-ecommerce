@@ -1,24 +1,33 @@
 <template>
   <div class="earrings-page">
-    <!-- 左側分類表 -->
-    <aside class="category-menu">
-      <h2>SHOP NOW</h2>
-      <ul>
-        <li v-for="category in categories" :key="category.id">
-          <a
-            :href="'/products?category=' + category.name"
-            :class="{ active: category.name === currentCategory }"
-          >
-            {{ category.name }}
-          </a>
-        </li>
-      </ul>
-    </aside>
+    <!-- 左側區域 -->
+    <div class="left-section">
+      <!-- 頁面路徑 -->
+      <nav class="breadcrumb">
+        <router-link to="/">Home</router-link> / 
+        <span>{{ currentCategory }}</span>
+      </nav>
+      
+      <!-- 左側分類表 -->
+      <aside class="category-menu">
+        <h2>SHOP NOW</h2>
+        <ul>
+          <li v-for="category in categories" :key="category.id">
+            <a
+              :href="'/products?category=' + category.name"
+              :class="{ active: category.name === currentCategory }"
+            >
+              {{ category.name }}
+            </a>
+          </li>
+        </ul>
+      </aside>
+    </div>
 
     <!-- 右側商品展示 -->
     <main class="product-gallery">
       <h1>耳飾</h1>
-      <p>探索我們的耳飾系列，發現更多迷人的設計。</p>
+      <p>探索我們的耳飾系列，展現個性與優雅的搭配選擇。</p>
       <div class="product-list">
         <div class="product" v-for="product in earrings" :key="product.id">
           <img :src="product.image" :alt="product.name" />
@@ -52,9 +61,11 @@ export default {
     ];
 
     const earrings = computed(() => [
-      { id: 1, name: "鑽石耳環", price: 499, image: "/images/earrings/earring1.jpg" },
-      { id: 2, name: "珍珠耳環", price: 299, image: "/images/earrings/earring2.jpg" },
-      { id: 3, name: "黃金耳墜", price: 699, image: "/images/earrings/earring3.jpg" },
+      { id: 1, name: "珍珠耳環", price: 1599, image: "/images/earrings/pearl-earrings.jpg" },
+      { id: 2, name: "鑽石耳環", price: 2999, image: "/images/earrings/diamond-earrings.jpg" },
+      { id: 3, name: "金屬耳夾", price: 1199, image: "/images/earrings/metal-ear-clips.jpg" },
+      { id: 4, name: "水晶耳釘", price: 999, image: "/images/earrings/crystal-studs.jpg" },
+      { id: 5, name: "環形耳環", price: 1399, image: "/images/earrings/hoop-earrings.jpg" },
     ]);
 
     return {
@@ -70,13 +81,40 @@ export default {
 .earrings-page {
   display: flex;
   gap: 20px;
+  max-width: 1600px; /* 設定最大寬度 */
+  margin: 0 100px; /* 自動居中頁面 */
   padding: 20px;
+}
+
+.left-section {
+  padding-left: 10px; /* 左側統一的內邊距 */
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 10px 0; /* 合併 margin */
+}
+
+.breadcrumb a {
+  color: #007bff;
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb span {
+  color: #333;
+  font-weight: bold;
 }
 
 .category-menu {
   width: 200px;
   border-right: 1px solid #ddd;
-  padding-right: 20px;
+  margin-top: 0; /* 確保分類表緊貼 breadcrumb */
 }
 
 .category-menu h2 {
@@ -135,9 +173,11 @@ export default {
 }
 
 .product img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
+  width: 100%; /* 確保圖片自適應卡片寬度 */
+  max-width: 200px; /* 限制圖片最大寬度 */
+  height: 200px; /* 固定高度，避免不規則圖片影響佈局 */
+  object-fit: cover; /* 裁切圖片以適應容器大小 */
+  margin: 0 auto; /* 置中圖片 */
 }
 
 .product h3 {
