@@ -3,7 +3,6 @@ import Home from '../views/Home.vue';
 import ProductList from '../views/ProductList.vue';
 import News from '../views/News.vue';
 import Contact from '../views/Contact.vue';
-import Headwear from '../views/Headwear.vue';
 
 const routes = [
   { path: '/', component: Home },

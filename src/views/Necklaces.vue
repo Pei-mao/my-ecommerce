@@ -1,5 +1,5 @@
 <template>
-  <div class="earrings-page">
+  <div class="necklaces-page">
     <!-- 左側分類表 -->
     <aside class="category-menu">
       <h2>SHOP NOW</h2>
@@ -17,10 +17,10 @@
 
     <!-- 右側商品展示 -->
     <main class="product-gallery">
-      <h1>耳飾</h1>
-      <p>探索我們的耳飾系列，發現更多迷人的設計。</p>
+      <h1>頸飾</h1>
+      <p>探索我們的頸飾系列，發現最耀眼的珠寶設計。</p>
       <div class="product-list">
-        <div class="product" v-for="product in earrings" :key="product.id">
+        <div class="product" v-for="product in necklaces" :key="product.id">
           <img :src="product.image" :alt="product.name" />
           <h3>{{ product.name }}</h3>
           <p>NT.{{ product.price }}</p>
@@ -38,7 +38,7 @@ import { useRoute } from "vue-router";
 export default {
   setup() {
     const route = useRoute();
-    const currentCategory = ref(route.query.category || "耳飾"); // 當前分類
+    const currentCategory = ref(route.query.category || "頸飾"); // 當前分類
     const categories = [
       { id: 1, name: "頭飾" },
       { id: 2, name: "耳飾" },
@@ -51,23 +51,23 @@ export default {
       { id: 9, name: "身體裝飾" },
     ];
 
-    const earrings = computed(() => [
-      { id: 1, name: "鑽石耳環", price: 499, image: "/images/earring1.jpg" },
-      { id: 2, name: "珍珠耳環", price: 299, image: "/images/earring2.jpg" },
-      { id: 3, name: "黃金耳墜", price: 699, image: "/images/earring3.jpg" },
+    const necklaces = computed(() => [
+      { id: 1, name: "鑽石項鍊", price: 4999, image: "/images/necklaces/鑽石項鍊.jpg" },
+      { id: 2, name: "珍珠項鍊", price: 2999, image: "/images/necklaces/珍珠項鍊.jpg" },
+      { id: 3, name: "水晶吊墜", price: 1999, image: "/images/necklaces/necklace3.jpg" },
     ]);
 
     return {
       currentCategory,
       categories,
-      earrings,
+      necklaces,
     };
   },
 };
 </script>
 
 <style scoped>
-.earrings-page {
+.necklaces-page {
   display: flex;
   gap: 20px;
   padding: 20px;

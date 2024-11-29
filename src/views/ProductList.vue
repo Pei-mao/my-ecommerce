@@ -14,11 +14,13 @@ import { ref, watch } from 'vue'; // 用於響應式數據
 import { useRoute } from 'vue-router'; // 獲取路由的查詢參數
 import Headwear from './Headwear.vue'; // 引入頭飾組件
 import Earrings from './Earrings.vue'; // 引入耳飾組件
+import Necklaces from './Necklaces.vue'; // 引入頸飾組件
 
 export default {
   components: {
     Headwear,
     Earrings,
+    Necklaces,
   },
   setup() {
     const route = useRoute(); // 獲取當前路由
@@ -33,6 +35,7 @@ export default {
     const components = {
       頭飾: Headwear,
       耳飾: Earrings,
+      頸飾: Necklaces,
     };
 
     return {

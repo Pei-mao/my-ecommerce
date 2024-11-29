@@ -42,7 +42,7 @@ export default {
     const categories = [
       { id: 1, name: "頭飾" },
       { id: 2, name: "耳飾" },
-      { id: 3, name: "項鍊" },
+      { id: 3, name: "頸飾" },
       { id: 4, name: "手部飾品" },
       { id: 5, name: "戒指" },
       { id: 6, name: "腳飾" },
