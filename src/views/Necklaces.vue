@@ -1,19 +1,28 @@
 <template>
   <div class="necklaces-page">
-    <!-- 左側分類表 -->
-    <aside class="category-menu">
-      <h2>SHOP NOW</h2>
-      <ul>
-        <li v-for="category in categories" :key="category.id">
-          <a
-            :href="'/products?category=' + category.name"
-            :class="{ active: category.name === currentCategory }"
-          >
-            {{ category.name }}
-          </a>
-        </li>
-      </ul>
-    </aside>
+    <!-- 左側區域 -->
+    <div class="left-section">
+      <!-- 頁面路徑 -->
+      <nav class="breadcrumb">
+        <router-link to="/">Home</router-link> / 
+        <span>{{ currentCategory }}</span>
+      </nav>
+      
+      <!-- 左側分類表 -->
+      <aside class="category-menu">
+        <h2>SHOP NOW</h2>
+        <ul>
+          <li v-for="category in categories" :key="category.id">
+            <a
+              :href="'/products?category=' + category.name"
+              :class="{ active: category.name === currentCategory }"
+            >
+              {{ category.name }}
+            </a>
+          </li>
+        </ul>
+      </aside>
+    </div>
 
     <!-- 右側商品展示 -->
     <main class="product-gallery">
@@ -30,6 +39,7 @@
     </main>
   </div>
 </template>
+
 
 <script>
 import { ref, computed } from "vue";
@@ -86,11 +96,35 @@ export default {
   padding: 20px;
 }
 
+.left-section {
+  padding-left: 10px; /* 左側統一的內邊距 */
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 10px 0; /* 合併 margin */
+}
+
+.breadcrumb a {
+  color: #007bff;
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb span {
+  color: #333;
+  font-weight: bold;
+}
+
 .category-menu {
   width: 200px;
   border-right: 1px solid #ddd;
-  padding-right: 0px;
-  padding-left: 0px; /* 適度的左邊內距 */
+  margin-top: 0; /* 確保分類表緊貼 breadcrumb */
 }
 
 .category-menu h2 {
@@ -121,7 +155,6 @@ export default {
 
 .product-gallery {
   flex: 1;
-  padding-left: 10px; /* 避免商品緊貼分類區域 */
 }
 
 .product-gallery h1 {
@@ -180,4 +213,5 @@ export default {
 .product button:hover {
   background-color: #0056b3;
 }
+
 </style>
