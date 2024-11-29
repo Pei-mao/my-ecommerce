@@ -52,9 +52,9 @@ export default {
     ];
 
     const earrings = computed(() => [
-      { id: 1, name: "鑽石耳環", price: 499, image: "/images/earring1.jpg" },
-      { id: 2, name: "珍珠耳環", price: 299, image: "/images/earring2.jpg" },
-      { id: 3, name: "黃金耳墜", price: 699, image: "/images/earring3.jpg" },
+      { id: 1, name: "鑽石耳環", price: 499, image: "/images/earrings/earring1.jpg" },
+      { id: 2, name: "珍珠耳環", price: 299, image: "/images/earrings/earring2.jpg" },
+      { id: 3, name: "黃金耳墜", price: 699, image: "/images/earrings/earring3.jpg" },
     ]);
 
     return {

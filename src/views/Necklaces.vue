@@ -40,15 +40,15 @@ export default {
     const route = useRoute();
     const currentCategory = ref(route.query.category || "頸飾"); // 當前分類
     const categories = [
-      { id: 1, name: "頭飾 Headwear" },
-      { id: 2, name: "耳飾 Earrings" },
-      { id: 3, name: "頸飾 Necklaces" },
-      { id: 4, name: "手部飾品 Hand Jewelry" },
-      { id: 5, name: "戒指 Rings" },
-      { id: 6, name: "腳飾 Anklets Accessories" },
-      { id: 7, name: "胸飾 Chest Accessories" },
-      { id: 8, name: "腰飾 Belts" },
-      { id: 9, name: "身體裝飾 Body Jewerly" },
+      { id: 1, name: "頭飾" },
+      { id: 2, name: "耳飾" },
+      { id: 3, name: "頸飾" },
+      { id: 4, name: "手部飾品" },
+      { id: 5, name: "戒指" },
+      { id: 6, name: "腳飾" },
+      { id: 7, name: "胸飾" },
+      { id: 8, name: "腰飾" },
+      { id: 9, name: "身體裝飾" },
     ];
 
     const necklaces = computed(() => [

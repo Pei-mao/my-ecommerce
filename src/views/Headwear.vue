@@ -52,9 +52,9 @@ export default {
     ];
 
     const headwears = computed(() => [
-      { id: 1, name: "珍珠髮箍", price: 299, image: "/images/headwear1.jpg" },
-      { id: 2, name: "水晶皇冠", price: 599, image: "/images/headwear2.jpg" },
-      { id: 3, name: "金色頭帶", price: 399, image: "/images/headwear3.jpg" },
+      { id: 1, name: "珍珠髮箍", price: 299, image: "/images/headwear/headwear1.jpg" },
+      { id: 2, name: "水晶皇冠", price: 599, image: "/images/headwear/headwear2.jpg" },
+      { id: 3, name: "金色頭帶", price: 399, image: "/images/headwear/headwear3.jpg" },
     ]);
 
     return {
