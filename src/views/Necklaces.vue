@@ -55,6 +55,10 @@ export default {
       { id: 1, name: "鑽石項鍊", price: 4999, image: "/images/necklaces/鑽石項鍊.jpg" },
       { id: 2, name: "珍珠項鍊", price: 2999, image: "/images/necklaces/珍珠項鍊.jpg" },
       { id: 3, name: "水晶吊墜", price: 1999, image: "/images/necklaces/necklace3.jpg" },
+      { id: 4, name: "純手工吊墜", price: 2199, image: "/images/necklaces/necklace4.jpg" },
+      { id: 5, name: "環保材質吊墜", price: 1199, image: "/images/necklaces/necklace5.jpg" },
+      { id: 6, name: "特殊材質吊墜", price: 3099, image: "/images/necklaces/necklace6.jpg" },
+      { id: 7, name: "火山灰吊墜", price: 5999, image: "/images/necklaces/珍珠項鍊.jpg" },
     ]);
 
     return {
@@ -70,13 +74,16 @@ export default {
 .necklaces-page {
   display: flex;
   gap: 20px;
+  max-width: 1600px; /* 設定最大寬度 */
+  margin: 0 100px; /* 自動居中頁面 */
   padding: 20px;
 }
 
 .category-menu {
   width: 200px;
   border-right: 1px solid #ddd;
-  padding-right: 20px;
+  padding-right: 0px;
+  padding-left: 0px; /* 適度的左邊內距 */
 }
 
 .category-menu h2 {
@@ -107,6 +114,7 @@ export default {
 
 .product-gallery {
   flex: 1;
+  padding-left: 10px; /* 避免商品緊貼分類區域 */
 }
 
 .product-gallery h1 {
@@ -135,9 +143,11 @@ export default {
 }
 
 .product img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
+  width: 100%; /* 確保圖片自適應卡片寬度 */
+  max-width: 200px; /* 限制圖片最大寬度 */
+  height: 200px; /* 固定高度，避免不規則圖片影響佈局 */
+  object-fit: cover; /* 裁切圖片以適應容器大小 */
+  margin: 0 auto; /* 置中圖片 */
 }
 
 .product h3 {
