@@ -40,25 +40,32 @@ export default {
     const route = useRoute();
     const currentCategory = ref(route.query.category || "頸飾"); // 當前分類
     const categories = [
-      { id: 1, name: "頭飾" },
-      { id: 2, name: "耳飾" },
-      { id: 3, name: "頸飾" },
-      { id: 4, name: "手部飾品" },
-      { id: 5, name: "戒指" },
-      { id: 6, name: "腳飾" },
-      { id: 7, name: "胸飾" },
-      { id: 8, name: "腰飾" },
-      { id: 9, name: "身體裝飾" },
+      { id: 1, name: "頭飾 Headwear" },
+      { id: 2, name: "耳飾 Earrings" },
+      { id: 3, name: "頸飾 Necklaces" },
+      { id: 4, name: "手部飾品 Hand Jewelry" },
+      { id: 5, name: "戒指 Rings" },
+      { id: 6, name: "腳飾 Anklets Accessories" },
+      { id: 7, name: "胸飾 Chest Accessories" },
+      { id: 8, name: "腰飾 Belts" },
+      { id: 9, name: "身體裝飾 Body Jewerly" },
     ];
 
     const necklaces = computed(() => [
       { id: 1, name: "鑽石項鍊", price: 4999, image: "/images/necklaces/鑽石項鍊.jpg" },
       { id: 2, name: "珍珠項鍊", price: 2999, image: "/images/necklaces/珍珠項鍊.jpg" },
-      { id: 3, name: "水晶吊墜", price: 1999, image: "/images/necklaces/necklace3.jpg" },
-      { id: 4, name: "純手工吊墜", price: 2199, image: "/images/necklaces/necklace4.jpg" },
-      { id: 5, name: "環保材質吊墜", price: 1199, image: "/images/necklaces/necklace5.jpg" },
-      { id: 6, name: "特殊材質吊墜", price: 3099, image: "/images/necklaces/necklace6.jpg" },
+      { id: 3, name: "水晶吊墜", price: 1999, image: "/images/necklaces/珍珠項鍊.jpg" },
+      { id: 4, name: "純手工吊墜", price: 2199, image: "/images/necklaces/珍珠項鍊.jpg" },
+      { id: 5, name: "環保材質吊墜", price: 1199, image: "/images/necklaces/鑽石項鍊.jpg" },
+      { id: 6, name: "特殊材質吊墜", price: 3099, image: "/images/necklaces/鑽石項鍊.jpg" },
       { id: 7, name: "火山灰吊墜", price: 5999, image: "/images/necklaces/珍珠項鍊.jpg" },
+      { id: 8, name: "鑽石項鍊", price: 4999, image: "/images/necklaces/鑽石項鍊.jpg" },
+      { id: 9, name: "珍珠項鍊", price: 2999, image: "/images/necklaces/珍珠項鍊.jpg" },
+      { id: 10, name: "水晶吊墜", price: 1999, image: "/images/necklaces/珍珠項鍊.jpg" },
+      { id: 11, name: "純手工吊墜", price: 2199, image: "/images/necklaces/珍珠項鍊.jpg" },
+      { id: 12, name: "環保材質吊墜", price: 1199, image: "/images/necklaces/鑽石項鍊.jpg" },
+      { id: 13, name: "特殊材質吊墜", price: 3099, image: "/images/necklaces/鑽石項鍊.jpg" },
+      { id: 14, name: "火山灰吊墜", price: 5999, image: "/images/necklaces/珍珠項鍊.jpg" },
     ]);
 
     return {
